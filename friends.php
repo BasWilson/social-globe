@@ -138,7 +138,7 @@ $result = mysqli_query($mysqli, $query);
     </div>
 
     <!-- The temp info box -->
-    <div id="noti-box" class="noti-box"> 
+    <div id="noti-box" class="noti-box">
         <div class="noti-content">
             <p id="noti-text">Some notification to be shown</p>
         </div>
@@ -155,11 +155,11 @@ $result = mysqli_query($mysqli, $query);
     <?php
         if (!$_SESSION['new']) {
         $_SESSION['new'] = true;
-        ?> 
+        ?>
         <script>OpenHelpModal()</script>
     <?php
     }
-    ?> 
+    ?>
     </body>
 
 </html>
