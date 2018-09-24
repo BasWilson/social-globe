@@ -10,6 +10,12 @@
 
     while ($row = mysqli_fetch_array($result)) 
     {
-             echo "<div style='background-color:". $row['color'] . " 'class='postDiv'><div class='postHeader'><img src=".'profile_pics/' . $row['profile_pic'] . " /><strong><p><xmp>".$row['name']."</xmp></p></strong></div> <p><xmp>" . $row['post'] . "</xmp></p><div class='like-container'><a onclick='likePost(this.id)'class='like-button' id'" . $row['post_id'] . "'><span>Liked by 10 other people</span></a></div><p></p><p>Posted on " . $row['post_time'] . "</p></div>";
+        $likes = "";
+        if ($row['likes'] == 1) {
+            $likes = $row['likes'] . " like";
+        } else {
+            $likes = $row['likes'] . " likes";
+        }
+             echo "<div style='background-color:". $row['color'] . " 'class='postDiv'><div class='postHeader'><img src=".'profile_pics/' . $row['profile_pic'] . " /><strong><p><xmp>".$row['name']."</xmp></p></strong></div> <p><xmp>" . $row['post'] . "</xmp></p><div class='like-container'><a onclick='LikePost(this.id)'class='like-button' id='" . $row['post_id'] . "'><span></span><p><strong>❤️ <span id='likes" . $row['post_id'] . "'>" . $likes . "</span></strong></p></a></div><p>Posted on " . $row['post_time'] . "</p></div>";
     }
 ?>

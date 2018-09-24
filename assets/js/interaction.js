@@ -316,3 +316,7 @@ function hexToRgbA(hex){
     }
     throw new Error('Bad Hex');
 }
+
+function LikePost(id) {
+    AddLikeToDatabase(id);
+}

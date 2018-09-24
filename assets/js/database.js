@@ -24,6 +24,28 @@ function UpdateUserToDatabase (id, fn, ln, g, dob) {
     });
 }
 
+function AddLikeToDatabase (id) {
+    $.ajax({
+         type: "POST",
+         url: 'includes/likePost.php',
+         data: {
+            likeId: id
+         },
+         success:function(data) {
+                if (data != 0) {
+                    if (data == 1) {
+                        $('#likes'+id).text(data + " like");
+                    } else {
+                        $('#likes'+id).text(data + " likes");
+                    }
+            } else {
+                //Er is een andere value dan 1 verkregen van de server, iets is er fout
+                ShowNotiBox(3000, data, false);
+            }
+         }
+    });
+}
+
 function DeleteUserFromDatabase (id) {
     console.log('trying to delete');
     $.ajax({

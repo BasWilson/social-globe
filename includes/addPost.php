@@ -23,7 +23,7 @@ if (Validate($post, $email, $color)) {
         $profile_pic = $row['profile_pic'];
         $color = $color . '0.4)';
     
-        $query = "INSERT INTO posts VALUES (null,'$email','$post','$postTime', '$name', '$profile_pic', '$color')";
+        $query = "INSERT INTO posts VALUES (null,'$email','$post','$postTime', '$name', '$profile_pic', '$color', 0)";
     
         if (mysqli_query($mysqli,$query))
         {
