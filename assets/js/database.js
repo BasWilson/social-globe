@@ -43,6 +43,33 @@ function DeleteUserFromDatabase (id) {
     });
 }
 
+
+function AddPostToDatabase(post) {
+    
+    $.ajax({
+         type: "POST",
+         url: 'includes/addPost.php',
+         data:{
+             post: post,
+             color: hexToRgbA("#"+$("#bubbleColorField").val())
+            },
+         success:function(data) {
+            if (data == 1) {
+                //posts gedaan
+                ShowNotiBox(1500, "Posted", true);
+                if (window.location.pathname == "/social-globe/index.php") {
+                    RefreshPosts();
+                    ClearTextFields();
+                }
+            } else {
+                //De login was waarschijnlijk niet goed
+                ShowNotiBox(1500, data, false);
+            }
+        }, dataType: 'json'
+    });
+}
+
+
 function VerifySignUpWithDatabase(fn, ln, dob, gender, email, password) {
     console.log('trying to add');
     
@@ -100,26 +127,25 @@ function VerifyLoginWithDatabase (email, password) {
     });
 }
 
-function RefreshUsers() {
+function RefreshPosts() {
 
-    $('.table').hide('slow'); // verstop de table
-    $('#users-data').empty(); // leeg de table
+    $('#postContainer').hide('slow'); // verstop de table
+    setTimeout(function () {
+      $('#postContainer').empty(); // leeg de table
+    },500)
 
     $.ajax({
         type: "POST",
-        url: 'includes/refreshUsers.php',
-        data: {
-            sortBy: $('#sortField').val() // de waarde van de dropdown
-        },
+        url: 'includes/refreshPosts.php',
         success:function(data) {
            if (data != null) {
-            $('#users-data').append(data); // voeg de nieuwe data weer toe
             setTimeout(function () {
-                $('.table').show('slow'); // laat dweer zien
+                $('#postContainer').append(data); // voeg de nieuwe data weer toe
+                $('#postContainer').show('slow'); // laat dweer zien
             },500)
         } else {
             // er is iets fout gegaan
-               ShowNotiBox(3000, "Oops, something went wrong, user data could not be fetched", false);
+               ShowNotiBox(3000, "Oops, something went wrong, posts could not be fetched", false);
            }
         }
    });
@@ -160,3 +186,4 @@ $(document).ready(function (e) {
        });
     }));
    });
+   

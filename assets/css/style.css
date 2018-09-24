@@ -135,3 +135,74 @@ footer {
     flex-direction: column;
     margin-top: 30px;
 }
+
+#postContainer {
+    align-content: center;
+    text-align: center;
+}
+.postDiv {
+    text-align: left !important;
+    margin: 20px;
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 20px;
+    display: inline-block;
+    font-family: Roboto Condensed;
+    word-wrap: break-word !important;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    transition: transform .2s;
+
+}
+
+.postDiv xmp {
+    word-wrap: break-word !important;
+    white-space:normal;
+    font-family: Roboto Condensed;
+}
+.postDiv img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    margin-right: 10px;
+}
+
+.postHeader {
+    display: flex;
+    flex-flow: row;
+    width: 80%;
+}
+@media only screen and (max-width: 600px) {
+    .postDiv {
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .postDiv:hover {
+        transform: scale(1.05);
+    }
+}
+
+.like-container {
+    margin: 10px 0px 20px 0px;
+    display: flex;
+    flex-flow: row;
+    margin: 0 auto;
+
+}
+.like-button {
+    transition: transform .2s;
+    padding: 10px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.like-button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}

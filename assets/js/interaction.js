@@ -256,23 +256,18 @@ function UserSignUp() {
 
 }
 
-function AddUser() {
+function AddPost() {
 
-    let fn = document.getElementById('addFirstNameField').value;
-    let ln = document.getElementById('addLastNameField').value;
-    let dob = document.getElementById('addDateField').value;
-    let gender = document.getElementById('addGenderField').value;
+    let post = document.getElementById('textField').value;
 
-    //User toeveoegen via ajax
-    AddUserToDatabase(fn, ln, dob, gender);
+    if (post != "") {
+        AddPostToDatabase(post);
+    }
 }
 
 function ClearTextFields() {
     //alle add user fields legen
-    document.getElementById('addFirstNameField').value = "";
-    document.getElementById('addLastNameField').value = "";
-    document.getElementById('addDateField').value = "";
-    document.getElementById('addGenderField').value = "";
+    document.getElementById('textField').value = "";
 }
 
 function OpenImageUpload (id) {
@@ -307,4 +302,17 @@ window.onclick = function(event) {
         modal.style.display = "none";
         modal.style.display = "none";
     }
+}
+
+function hexToRgbA(hex){
+    var c;
+    if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+        c= hex.substring(1).split('');
+        if(c.length== 3){
+            c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+        }
+        c= '0x'+c.join('');
+        return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',';
+    }
+    throw new Error('Bad Hex');
 }

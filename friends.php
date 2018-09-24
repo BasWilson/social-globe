@@ -64,14 +64,8 @@ $result = mysqli_query($mysqli, $query);
                 <div class="col-md-8">
                     <p style="margin-top:10px;margin-bottom:10px;"><strong>What's on your mind?</strong></p>
                     <textarea class="form-control" type="text" id="textField" required="" placeholder="Maximum 1000 characters" maxlength="1000" minlength="2" autofocus="" style="margin-bottom:10px;margin-top:10px;"></textarea>
-                    <p style="margin-top:10px;margin-bottom:10px;"><strong>Visibility</strong></p>
-                    <select class="form-control" id="visibilityField" style="margin-top:10px;margin-bottom:10px;width: 150px">
-                        <optgroup label="Visibility">
-                            <option id="public-option" value="public" selected="">Public</option>
-                            <option id="friends-option" value="friends">My friends</option>
-                        </optgroup>
-                    </select>
-                        <button onclick="AddUser()" class="btn btn-primary" type="button" style="margin-top:10px;margin-bottom:10px;">Post</button>
+                    Bubble color <input class="jscolor form-control" id="bubbleColorField" value="FF0000">
+                        <button onclick="AddPost()" class="btn btn-primary" type="button" style="margin-top:10px;margin-bottom:10px;">Post</button>
                         <button onclick="CloseAddUser()" class="btn btn-primary" type="button" style="background-color: orange; margin: 10px; border-color: orange;">Close</button>
                 </div>
 
@@ -149,6 +143,7 @@ $result = mysqli_query($mysqli, $query);
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/js/interaction.js"></script>
+    <script src="assets/js/jscolor.js"></script>
     <script src="assets/js/database.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/js/bootstrap.bundle.min.js"></script>
 
