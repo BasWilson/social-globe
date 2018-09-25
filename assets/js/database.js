@@ -151,6 +151,8 @@ function VerifyLoginWithDatabase (email, password) {
 
 function RefreshPosts() {
 
+
+    $('#loader').show(200); // verstop de table
     $('#postContainer').hide('slow'); // verstop de table
     setTimeout(function () {
       $('#postContainer').empty(); // leeg de table
@@ -164,6 +166,8 @@ function RefreshPosts() {
             setTimeout(function () {
                 $('#postContainer').append(data); // voeg de nieuwe data weer toe
                 $('#postContainer').show('slow'); // laat dweer zien
+                $('#loader').hide(200); // verstop de table
+
             },500)
         } else {
             // er is iets fout gegaan
@@ -209,3 +213,26 @@ $(document).ready(function (e) {
     }));
    });
    
+   function GetProfileFromServer () {
+    $('#profile-container').hide('fast'); // verstop de table
+    setTimeout(function () {
+      $('#profile-conatiner').empty(); // leeg de table
+    },500)
+
+    $.ajax({
+        type: "POST",
+        url: 'includes/loadProfile.php',
+        success:function(data) {
+           if (data != null) {
+            setTimeout(function () {
+                $('#profile-container').append(data); // voeg de nieuwe data weer toe
+                $('#profile-container').show('fast'); // laat dweer zien
+                $('#loader').hide(200); // laat dweer zien
+            },500)
+        } else {
+            // er is iets fout gegaan
+               ShowNotiBox(3000, "Oops, something went wrong, profile could not be fetched", false);
+           }
+        }
+   });
+   }

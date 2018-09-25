@@ -79,6 +79,7 @@ $result = mysqli_query($mysqli, $query);
     <div class="container">
         <a style="cursor:pointer" onclick="RefreshPosts()">Refresh</a>
         <div class="row">
+            <img id="loader" src="assets/img/loading.svg" />
             <div id="postContainer" class="col-md-12">
              </div>
         </div>

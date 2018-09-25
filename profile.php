@@ -73,6 +73,18 @@ $result = mysqli_query($mysqli, $query);
         </div>
     </div>
 
+    <main>
+    <!-- PROFILE -->
+    <div class="container">
+        <div class="row">
+            <img id="loader" src="assets/img/loading.svg" />
+            <div id="profile-container" class="col-md-12">
+
+            </div>
+        </div>
+    </div>
+    </main>
+
     <!-- The Modal -->
     <div id="modal-popup" class="modal">
 
@@ -146,13 +158,10 @@ $result = mysqli_query($mysqli, $query);
     <script src="assets/js/jscolor.js"></script>
     <script src="assets/js/database.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/js/bootstrap.bundle.min.js"></script>
-
+    <script>GetProfile();</script>
     <?php
         if (!$_SESSION['new']) {
         $_SESSION['new'] = true;
-        ?> 
-        <script>OpenHelpModal()</script>
-    <?php
     }
     ?> 
     </body>

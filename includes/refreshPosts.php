@@ -4,7 +4,7 @@
 
     //$sortBy = $_POST['sortBy']; // de waarde van de dropdown menu via ajax binnen gekregen
 
-    $query = 'SELECT * FROM posts ORDER BY post_time DESC'; // haal de nieuwe lijst binnen maar gesoorteerd zoals aangebraagd
+    $query = 'SELECT * FROM posts ORDER BY post_time DESC';
 
     $result = mysqli_query($mysqli, $query);
 

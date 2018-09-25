@@ -320,3 +320,9 @@ function hexToRgbA(hex){
 function LikePost(id) {
     AddLikeToDatabase(id);
 }
+
+
+function GetProfile() {
+    $('#loader').show(200);
+    GetProfileFromServer();
+}
