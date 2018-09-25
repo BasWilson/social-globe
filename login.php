@@ -37,12 +37,6 @@
             <div class="form-group"><input class="form-control" type="name" id="lnFieldSignUp" placeholder="Surname"></div>
             <p style="margin-top:10px;margin-bottom:10px; text-align: left !important;"><strong>Birth date</strong></p>
             <div class="form-group"><input class="form-control" type="date" id="dateFieldSignUp" placeholder="Date of birth"></div>
-            <select class=" form-control" id="genderFieldSignUp" style="margin-top:10px;margin-bottom:10px;">
-                <optgroup label="Gender">
-                    <option id="male-option" value="m" selected="">Male</option>
-                    <option id="female-option" value="f">Female</option>
-                </optgroup>
-            </select>
             <div class="form-group"><input class="form-control" type="email" id="emailFieldSignUp" placeholder="Email"></div>
             <div class="form-group"><input class="form-control" type="password" id="passwordFieldSignUp" placeholder="Password"></div>
             <div class="form-group"><a class="btn btn-primary btn-block" style="color:white;" onclick="UserSignUp()">Sign up</a></div>

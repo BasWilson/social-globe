@@ -85,15 +85,14 @@ function AddPostToDatabase(post) {
                 }
             } else {
                 //De login was waarschijnlijk niet goed
-                ShowNotiBox(1500, data, false);
+                ShowNotiBox(1500, "Please try to log in again", false);
             }
         }, dataType: 'json'
     });
 }
 
 
-function VerifySignUpWithDatabase(fn, ln, dob, gender, email, password) {
-    console.log('trying to add');
+function VerifySignUpWithDatabase(fn, ln, dob, email, password) {
     
     $.ajax({
          type: "POST",
@@ -102,7 +101,6 @@ function VerifySignUpWithDatabase(fn, ln, dob, gender, email, password) {
              fn: fn,
              ln: ln,
              dob: dob,
-             gender: gender,
              email: email,
              password: password
             },
@@ -224,6 +222,7 @@ $(document).ready(function (e) {
         url: 'includes/loadProfile.php',
         success:function(data) {
            if (data != null) {
+               console.log(data);
             setTimeout(function () {
                 $('#profile-container').append(data); // voeg de nieuwe data weer toe
                 $('#profile-container').show('fast'); // laat dweer zien

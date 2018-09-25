@@ -240,13 +240,12 @@ function UserSignUp() {
     let fn = document.getElementById('fnFieldSignUp').value;
     let ln = document.getElementById('lnFieldSignUp').value;
     let dob = document.getElementById('dateFieldSignUp').value;
-    let gender = document.getElementById('genderFieldSignUp').value;
     let email = document.getElementById('emailFieldSignUp').value;
     let password = document.getElementById('passwordFieldSignUp').value;
 
-    if (fn != "" && ln != "" && dob != "" && gender != "" && email != "" && password != "") {
+    if (fn != "" && ln != "" && dob != "" && email != "" && password != "") {
         //User toeveoegen via ajax
-        VerifySignUpWithDatabase(fn, ln, dob, gender, email, password);
+        VerifySignUpWithDatabase(fn, ln, dob, email, password);
         $(".login-clean").hide('fast');
     } else {
         SwitchLoginScreen(0);

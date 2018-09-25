@@ -5,23 +5,25 @@ include 'log.php'; // is een tool om met de chrome console php te debuggen
 $name = $_POST['fn'];
 $lastname = $_POST['ln'];
 $dob = $_POST['dob'];
-$gender = $_POST['gender'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
+ChromePhp::log($password);
 //Door de validate functie krijgen we uit de data of het compleet en correct is
-if (Validate($name, $dob, $lastname, $gender, $email, $password)) {
+if (Validate($name, $dob, $lastname, $email, $password)) {
 
     //Maak de datum van vandaag als de lid sinds waarde
     $date = date('Y-m-d H:i:s'); 
 
     //De standaard foto van een gebruiker
-    $genderPic = $gender . '_default.jpg';
+    $genderPic = 'default.jpg';
     
     //Vul het in
     $hashedPass = password_hash($password, PASSWORD_DEFAULT);
-
-    $query = "INSERT INTO users VALUES ('$name','$lastname','$gender','$email','$dob','$hashedPass', '$date', '$genderPic', NULL)";
+    $name = ucfirst($name);
+    $lastname = ucfirst($lastname);
+    
+    $query = "INSERT INTO users VALUES ('$name','$lastname','$email','$dob','$hashedPass', '$date', '$genderPic', NULL)";
 
     if (mysqli_query($mysqli,$query))
     {
@@ -33,7 +35,6 @@ if (Validate($name, $dob, $lastname, $gender, $email, $password)) {
         $_SESSION['dob'] = $dob;
         $_SESSION['date_joined'] = $date;
         $_SESSION['profile_pic'] = $genderPic;
-        $_SESSION['gender'] = $gender;
         $_SESSION['new'] = false; // zet een session variable met new zodat de site weet de gebruiker het help menu te laten zien
     }
     else
@@ -48,19 +49,15 @@ if (Validate($name, $dob, $lastname, $gender, $email, $password)) {
 }
 
 //Door de validate functie krijgen we uit de data of het compleet en correct is
-function Validate ($name, $dob, $lastname, $gender, $email, $password) {
+function Validate ($name, $dob, $lastname, $email, $password) {
 
     require 'config.php';
   
     //Check of de waarden niet leeg zijn
-    if ($name != "" && $lastname != "" && $gender != "" && $password != "" && $dob != "" && $email != "") {
+    if ($name != "" && $lastname != "" && $password != "" && $dob != "" && $email != "") {
         ChromePhp::log("Not empty");
-        if (!ContainsNumbers($name) && !ContainsNumbers($lastname) && !ContainsNumbers($gender)) {
+        if (!ContainsNumbers($name) && !ContainsNumbers($lastname)) {
             ChromePhp::log("Strings dont contain numbers");            
-            if (IsGender($gender)) {
-                ChromePhp::log("gender is okay");
-                //Check of de datum echt een datum is en ook niet ouder groter dan de join date
-                
                 $oDate = date('Y-m-d H:i:s'); 
                 $timeTwo = strtotime($dob);
                 $timeOne = strtotime($oDate);
@@ -79,7 +76,6 @@ function Validate ($name, $dob, $lastname, $gender, $email, $password) {
                 } else {
                     echo "Birth date has to be earlier than the current date.";
                 }
-            }
         } else {
             echo "Names can not contain numbers.";
         }
@@ -88,12 +84,6 @@ function Validate ($name, $dob, $lastname, $gender, $email, $password) {
     }
   }
 
-function IsGender($gender) {
-    if ($gender == "m" || $gender == "f") {
-        return true;
-    }
-    return false;
-}
 
 function ContainsNumbers($String){
     return preg_match('/\\d/', $String) > 0;

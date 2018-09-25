@@ -31,7 +31,6 @@ function LoginAdmin($e, $p) {
           $_SESSION['dob'] = $row['dob'];
           $_SESSION['date_joined'] = $row['date_joined'];
           $_SESSION['profile_pic'] = $row['profile_pic'];
-          $_SESSION['gender'] = $row['gender'];
           $_SESSION['new'] = false; // zet een session variable met new zodat de site weet de gebruiker het help menu te laten zien
         } else {
           echo false;
