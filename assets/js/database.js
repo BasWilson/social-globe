@@ -74,7 +74,7 @@ function DeleteUserFromDatabase (id) {
 
 
 function AddPostToDatabase(post) {
-    
+
     $.ajax({
          type: "POST",
          url: 'includes/addPost.php',
@@ -100,7 +100,7 @@ function AddPostToDatabase(post) {
 }
 
 function AddChatToDatabase(message) {
-    
+
     $.ajax({
          type: "POST",
          url: 'includes/sendChat.php',
@@ -121,7 +121,7 @@ function AddChatToDatabase(message) {
 
 
 function VerifySignUpWithDatabase(fn, ln, dob, email, password) {
-    
+
     $.ajax({
          type: "POST",
          url: 'includes/signUpUser.php',
@@ -220,7 +220,7 @@ function RefreshChat() {
         }
    });
 }
-//Image upload 
+//Image upload
 $(document).ready(function (e) {
     $("#image-form").on('submit',(function(e) {
      e.preventDefault();
@@ -241,7 +241,7 @@ $(document).ready(function (e) {
             CloseModal();
             ShowNotiBox(3000, "Image is uploaded.", true);
             RefreshUsers();
-            $("#image-form")[0].reset(); 
+            $("#image-form")[0].reset();
 
        }
        else {
@@ -252,11 +252,11 @@ $(document).ready(function (e) {
         error: function(e) {
             // Een andere error, zal wss niet komen
             ShowNotiBox(3000, e + ". Try again.", false);
-        }          
+        }
        });
     }));
    });
-   
+
    function GetProfileFromServer () {
     $('#profile-container').hide('fast'); // verstop de table
     setTimeout(function () {
@@ -280,3 +280,6 @@ $(document).ready(function (e) {
         }
    });
    }
+
+
+  

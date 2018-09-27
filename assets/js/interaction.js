@@ -46,7 +46,7 @@ function SwitchLoginScreen(currentLoginScreen) {
         $('#login-container').show("fast");
         $('#signup-container').hide("fast");
     }
-    
+
 }
 //Edit een user door op de edit knop te kliken
 function EditUser(id) {
@@ -75,7 +75,7 @@ function EditUser(id) {
     //Non-editable values
     sinceText.innerHTML = since;
     idText.innerHTML = id;
-    
+
     if (g == "M") {
         document.getElementById('male-option').selected = true
     } else if (g == "F") {
@@ -145,7 +145,7 @@ function DeleteUser(id) {
 
 function ConfirmDelete() {
 
-    // Verstuur door via ajax. 
+    // Verstuur door via ajax.
     console.log("Deleting user: " + selectedID)
 
     DeleteUserFromDatabase(selectedID);
@@ -212,16 +212,16 @@ function ShowNotiBox (duration, text, status) {
     if (status) {
         notiBox.style.backgroundColor = "rgba(0, 255, 0, 0.5)";
     } else {
-        notiBox.style.backgroundColor = "rgba(255, 0, 0, 0.5)";        
+        notiBox.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
     }
     $('.noti-box').show("fast");
 
-    //Als de opgegeven duration minder dan 1000ms of groter dan 5000ms is of geen waarde is dan word het 3000ms 
+    //Als de opgegeven duration minder dan 1000ms of groter dan 5000ms is of geen waarde is dan word het 3000ms
     if (duration > 5000 || duration == null || duration < 1000) {
         duration = 3000
     }
 
-    //Stel de tijd in in ms dat het boxje er moet blijven dmv de setTimeout functie. 
+    //Stel de tijd in in ms dat het boxje er moet blijven dmv de setTimeout functie.
     setTimeout(function () {
         notiText.innerHTML = "";
         $('.noti-box').hide("fast");
@@ -371,3 +371,11 @@ function scrollDown() {
     $('.chat-messages').animate({
     scrollTop: $('.chat-messages').get(0).scrollHeight}, 100);
   }
+
+  document.getElementById('chat-text-field').addEventListener('keypress', function(event) {
+      if (event.keyCode == 13) {
+          event.preventDefault();
+          SendChatMessage();
+
+      }
+  });
