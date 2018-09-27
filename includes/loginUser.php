@@ -26,6 +26,7 @@ function LoginAdmin($e, $p) {
           echo true; // laat ajax weten
           session_start(); // start de sessie
           $_SESSION['email'] = $e;
+          $_SESSION['id'] = $row['id'];
           $_SESSION['first_name'] = $row['first_name'];
           $_SESSION['last_name'] = $row['last_name'];
           $_SESSION['dob'] = $row['dob'];

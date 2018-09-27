@@ -35,6 +35,13 @@ function AddLikeToDatabase (id) {
                 if (data != 0) {
                     if (data == 1) {
                         $('#likes'+id).text(data + " like");
+                    } else if (data == 2) {
+                        var oldLikeValue = $('#likes'+id).text();
+                            $('#likes'+id).text("Already liked")
+                            setTimeout(function () {
+                                $('#likes'+id).text(oldLikeValue);
+                        },1000);
+                        $('#likes'+id).text("Already liked");
                     } else {
                         $('#likes'+id).text(data + " likes");
                     }
@@ -73,7 +80,7 @@ function AddPostToDatabase(post) {
          url: 'includes/addPost.php',
          data:{
              post: post,
-             color: hexToRgbA("#"+$("#bubbleColorField").val())
+             color: RandomColor()
             },
          success:function(data) {
             if (data == 1) {
@@ -82,10 +89,31 @@ function AddPostToDatabase(post) {
                 if (window.location.pathname == "/social-globe/index.php") {
                     RefreshPosts();
                     ClearTextFields();
+                    ClosePost();
                 }
             } else {
                 //De login was waarschijnlijk niet goed
                 ShowNotiBox(1500, "Please try to log in again", false);
+            }
+        }, dataType: 'json'
+    });
+}
+
+function AddChatToDatabase(message) {
+    
+    $.ajax({
+         type: "POST",
+         url: 'includes/sendChat.php',
+         data:{
+             message: message,
+            },
+         success:function(data) {
+            if (data == 1) {
+                //posts gedaan
+                ClearTextFields();
+            } else {
+                //De login was waarschijnlijk niet goed
+                ShowNotiBox(1500, "Please try again", false);
             }
         }, dataType: 'json'
     });
@@ -174,6 +202,24 @@ function RefreshPosts() {
         }
    });
 }
+
+function RefreshChat() {
+
+    $.ajax({
+        type: "POST",
+        url: 'includes/refreshChat.php',
+        success:function(data) {
+           if (data != null) {
+                $('.chat-messages').empty(); // voeg de nieuwe data weer toe
+                $('.chat-messages').append(data); // voeg de nieuwe data weer toe
+                scrollDown();
+        } else {
+            // er is iets fout gegaan
+               ShowNotiBox(3000, "Oops, something went wrong, chat could not be fetched", false);
+           }
+        }
+   });
+}
 //Image upload 
 $(document).ready(function (e) {
     $("#image-form").on('submit',(function(e) {
@@ -222,7 +268,6 @@ $(document).ready(function (e) {
         url: 'includes/loadProfile.php',
         success:function(data) {
            if (data != null) {
-               console.log(data);
             setTimeout(function () {
                 $('#profile-container').append(data); // voeg de nieuwe data weer toe
                 $('#profile-container').show('fast'); // laat dweer zien

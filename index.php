@@ -65,7 +65,6 @@ $result = mysqli_query($mysqli, $query);
                 <div class="col-md-8">
                     <p style="margin-top:10px;margin-bottom:10px;"><strong>What's on your mind?</strong></p>
                     <textarea class="form-control" type="text" id="textField" required="" placeholder="Maximum 1000 characters" maxlength="1000" minlength="2" autofocus="" style="margin-bottom:10px;margin-top:10px;"></textarea>
-                    Bubble color <input class="jscolor form-control" id="bubbleColorField" value="FF0000">
                     <button onclick="AddPost()" class="btn btn-primary" type="button" style="margin-top:10px;margin-bottom:10px;">Post</button>
                         <button onclick="CloseAddUser()" class="btn btn-primary" type="button" style="background-color: orange; margin: 10px; border-color: orange;">Close</button>
                 </div>
@@ -102,6 +101,19 @@ $result = mysqli_query($mysqli, $query);
 
     </div>
 
+    <!-- Chat button -->
+    <div onclick="ToggleChat()" class="chat-button"> 
+        <img class="chat-button-image" src="assets/img/chat.png" />
+    </div>
+
+    <!-- Chat room -->
+    <div class="chat-container"> 
+        <h4>Global Chat</h4>
+        <div class="chat-messages">
+        </div>
+        <input id="chat-text-field" placeholder="Press enter to send..." />
+        <a onclick="SendChatMessage()" class="chat-message-send"><strong>Send</strong></a>
+    </div>
     <!-- The help Modal -->
     <div id="help-modal-popup" class="help-modal">
 

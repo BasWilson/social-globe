@@ -28,12 +28,14 @@ var fn, ln, g, dob, since;
 
 var selectedID = -1; // het geseleceteerde id van de user
 var selectedImageID = -1; // ˆˆ
-
+var chatOpen = false;
+var chatInterval;
 //Opent de New user menu
 function OpenNewPost () {
 
     selectedID = -1;
     $('#add-container').show("fast");
+    $('#bubbleColorField').val((Math.random()*0xFFFFFF<<0).toString(16));
 }
 
 function SwitchLoginScreen(currentLoginScreen) {
@@ -161,6 +163,14 @@ function CloseEdit() {
 
 }
 
+function ClosePost() {
+
+    selectedID = -1;
+
+    $('#add-container').hide("fast");
+
+}
+
 
 function CloseAddUser() {
 
@@ -267,6 +277,7 @@ function AddPost() {
 function ClearTextFields() {
     //alle add user fields legen
     document.getElementById('textField').value = "";
+    document.getElementById('chat-text-field').value = "";
 }
 
 function OpenImageUpload (id) {
@@ -303,6 +314,10 @@ window.onclick = function(event) {
     }
 }
 
+function RandomColor () {
+    let color = "rgba("+ getRandomInt(255) + "," + getRandomInt(255) + "," + getRandomInt(255) + ", ";
+    return color;
+}
 function hexToRgbA(hex){
     var c;
     if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
@@ -320,8 +335,39 @@ function LikePost(id) {
     AddLikeToDatabase(id);
 }
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 
 function GetProfile() {
     $('#loader').show(200);
     GetProfileFromServer();
 }
+
+function ToggleChat () {
+    $('.chat-container').toggle('fast');
+    if (chatOpen) {
+        $('.chat-button-image').attr("src", "assets/img/chat.png");
+        chatOpen = false;
+        clearInterval(chatInterval);
+    } else {
+        $('.chat-button-image').attr("src", "assets/img/cross.png");
+        chatOpen = true;
+        chatInterval = setInterval(function () {
+            RefreshChat();
+        },100)
+    }
+}
+
+function SendChatMessage () {
+    if ($('#chat-text-field').val() != "") {
+        AddChatToDatabase($('#chat-text-field').val());
+    }  else {
+        ShowNotiBox(1500,"Enter a message", false);
+    }
+}
+
+function scrollDown() {
+    $('.chat-messages').animate({
+    scrollTop: $('.chat-messages').get(0).scrollHeight}, 100);
+  }

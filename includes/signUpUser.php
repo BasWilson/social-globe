@@ -34,6 +34,16 @@ if (Validate($name, $dob, $lastname, $email, $password)) {
         $_SESSION['last_name'] = $lastname;
         $_SESSION['dob'] = $dob;
         $_SESSION['date_joined'] = $date;
+
+        $query = "SELECT id FROM users WHERE email = '$email'";
+
+        $result = mysqli_query($mysqli, $query);
+        
+        
+        if ($row = mysqli_fetch_assoc($result)) { // bestaat
+            $_SESSION['id'] = $row['id'];
+        }
+        
         $_SESSION['profile_pic'] = $genderPic;
         $_SESSION['new'] = false; // zet een session variable met new zodat de site weet de gebruiker het help menu te laten zien
     }
