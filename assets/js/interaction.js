@@ -394,6 +394,6 @@ document.getElementById('textField').addEventListener('keypress', function(event
 //profile aanpassen
 function EditProfile(){
 $('.profile-edit-change').hide(200);
-document.getElementById('profile-edit1-change').style.display = "block";
+document.getElementById('profile-edit1-change').style.display = "";
 
 }
