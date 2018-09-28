@@ -390,6 +390,7 @@ document.getElementById('textField').addEventListener('keypress', function(event
     }
 });
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 //profile aanpassen
@@ -398,5 +399,7 @@ $('.profile-edit-change').hide(200);
 document.getElementById('profile-edit1-change').style.display = "block";
 
 }
+=======
+>>>>>>> parent of 3728d6b... dingen gefixt alleen de php profile werkt niet geen idee wat er fout is
 =======
 >>>>>>> parent of 3728d6b... dingen gefixt alleen de php profile werkt niet geen idee wat er fout is

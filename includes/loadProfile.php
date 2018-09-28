@@ -5,6 +5,7 @@
     echo '
     <div class="profile-card">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <img id="profile-image" onclick="OpenImageUpload()" src="profile_pics/'.$_SESSION['profile_pic'].'" class="profile-image card-item" />
         <p>click on the picture to upload your post </p><br>
 
@@ -13,8 +14,14 @@
         <p> Name: </p>
         <p class="card-item">'. $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] .'</p><br>
         <p> Email: </p>
+=======
+        <img src="profile_pics/'.$_SESSION['profile_pic'].'" class="profile-image card-item" />
+>>>>>>> parent of 3728d6b... dingen gefixt alleen de php profile werkt niet geen idee wat er fout is
         <p class="card-item">'. $_SESSION['email'] .'</p>
+        <p class="card-item">'. $_SESSION['id'] .'</p>
+        <p class="card-item">'. $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] .'</p>
         <a class="profile-edit-button" onclick="EditProfile()"><img src="assets/img/edit.png"/></a>
+<<<<<<< HEAD
 </div>
 
 ';
@@ -70,3 +77,9 @@ else {
 </div>
 }
 >>>>>>> parent of 99acf93... shit d
+=======
+    </div>
+    ';
+    }
+?>
+>>>>>>> parent of 3728d6b... dingen gefixt alleen de php profile werkt niet geen idee wat er fout is
