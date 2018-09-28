@@ -9,28 +9,33 @@
         <p>click on the picture to upload your post </p><br>
 
 <div class="profile-edit-change">
-        <p> email: </p>
-        <p class="card-item">'. $_SESSION['email'] .'</p><br>
-        <p> first name: </p>
-        <p class="card-item">'. $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] .'</p>
+
+        <p> Name: </p>
+        <p class="card-item">'. $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] .'</p><br>
+        <p> Email: </p>
+        <p class="card-item">'. $_SESSION['email'] .'</p>
         <a class="profile-edit-button" onclick="EditProfile()"><img src="assets/img/edit.png"/></a>
 </div>
+
 ';
 echo "<div id='profile-edit1-change'>";
 
 
+
+$userid = $_SESSION['id'];
+
+$query = "SELECT * FROM users WHERE id = '$userid'";
+
+
+$resultaat = mysqli_query($mysqli, $query);
+
+if (mysqli_num_rows($resultaat)==0) {
+header("Location: profile.php");
+}
+else {
+  $rij = mysqli_fetch_array($resultaat);
 ?>
-<p> suck penis </p>
-
-
-<a class="profile-edit-button" onclick="EditProfile()"><img src="assets/img/checkmark.png"/></a>
-</div>
-
-
-    </div>
-
-    }
-?>
+<<<<<<< HEAD
 =======
         <img src="profile_pics/'.$_SESSION['profile_pic'].'" class="profile-image card-item" />
         <p class="card-item">'. $_SESSION['email'] .'</p>
@@ -42,3 +47,26 @@ echo "<div id='profile-edit1-change'>";
     }
 ?>
 >>>>>>> parent of 3728d6b... dingen gefixt alleen de php profile werkt niet geen idee wat er fout is
+=======
+
+
+<input type="text" name="first_name" value="<?php echo $rij['first_name'] ?>">
+
+<input type="text" name="last_name" value="<?php echo $rij['last_name'] ?>">
+
+<input type="text" name="email" value="<?php echo $rij['email'] ?>">
+
+<input type="submit" name="submit" value="Opslaan">
+
+
+
+
+}
+
+<p> suck penis </p>
+<a class="profile-edit-button" onclick="EditProfile()"><img src="assets/img/checkmark.png"/></a>
+</div>
+
+</div>
+}
+>>>>>>> parent of 99acf93... shit d
