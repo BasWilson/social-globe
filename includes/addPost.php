@@ -12,7 +12,7 @@ $email = $_SESSION['email'];
 if (Validate($post, $email, $color)) {
 
     //Maak de datum van vandaag als de lid sinds waarde
-    $postTime = date('Y-m-d H:i:s'); 
+
 
     $queryP = "SELECT first_name, last_name, profile_pic FROM users WHERE email = '$email'";
     $result = mysqli_query($mysqli, $queryP);
@@ -22,9 +22,9 @@ if (Validate($post, $email, $color)) {
         $name = $row['first_name'] . " " . $row['last_name'];
         $profile_pic = $row['profile_pic'];
         $color = $color . '0.4)';
-    
-        $query = "INSERT INTO posts VALUES (null,'$email','$post','$postTime', '$name', '$profile_pic', '$color', 0)";
-    
+
+        $query = "INSERT INTO posts VALUES (null,'$email','$post',null, '$name', '$profile_pic', '$color', 0)";
+
         if (mysqli_query($mysqli,$query))
         {
             echo true; // laat ajax weten dat het goed is
@@ -45,7 +45,7 @@ if (Validate($post, $email, $color)) {
 
 //Door de validate functie krijgen we uit de data of het compleet en correct is
 function Validate ($post, $email, $color) {
-  
+
     //Check of de waarden niet leeg zijn
     if ($post != "" && $email != "") {
         ChromePhp::log("Not empty");

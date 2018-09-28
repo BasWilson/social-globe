@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <link rel="shortcut icon" href="assets/img/socialglobe_logo.png" type="image/png"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in to Social Globe</title>
@@ -14,7 +15,7 @@
 <body>
     <div>
         <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
-            <div class="container"><a class="navbar-brand" href="#">Social Globe</a>
+            <div class="container"><a class="navbar-brand" href="#"><img src="assets/img/socialglobe_logo.png" style="width:90px; height:86px"  alt="logo"> </a>
             </div>
         </nav>
     </div>
@@ -24,7 +25,7 @@
             <h3 style="margin-bottom: 20px;" >Returning user</h3>
             <div class="form-group"><input class="form-control" type="email" id="emailFieldLogIn" placeholder="Email"></div>
             <div class="form-group"><input class="form-control" type="password" id="passwordFieldLogIn" placeholder="Password"></div>
-            <div class="form-group"><a class="btn btn-primary btn-block" style="color:white;" onclick="UserLogin()">Log In</a></div>
+            <div class="form-group"><a class="modalbutton" style="color:white;" onclick="UserLogin()">Log In</a></div>
             <a style="cursor: pointer;" onclick="SwitchLoginScreen(0)">New user? Sign up instead.</a>
         </form>
     </div>
@@ -39,20 +40,20 @@
             <div class="form-group"><input class="form-control" type="date" id="dateFieldSignUp" placeholder="Date of birth"></div>
             <div class="form-group"><input class="form-control" type="email" id="emailFieldSignUp" placeholder="Email"></div>
             <div class="form-group"><input class="form-control" type="password" id="passwordFieldSignUp" placeholder="Password"></div>
-            <div class="form-group"><a class="btn btn-primary btn-block" style="color:white;" onclick="UserSignUp()">Sign up</a></div>
+            <div class="form-group"><a class="modalbutton" style="color:white;" onclick="UserSignUp()">Sign up</a></div>
             <a style="cursor: pointer;" onclick="SwitchLoginScreen(1)">Returning user? Log in.</a>
         </form>
     </div>
 
         <!-- The temp info box -->
-    <div id="noti-box" class="noti-box"> 
+    <div id="noti-box" class="noti-box">
         <div class="noti-content">
             <p id="noti-text">Some notification to be shown</p>
         </div>
     </div>
     <footer>
-        <p>Made by Bas Wilson (82399), Student at Grafisch Lyceum Rotterdam.</p>
-        <p>Backend 2, period 1.</p>
+        <p>Made by Nick Voerman (81324) and Bas Wilson (82399), Students at Grafisch Lyceum Rotterdam.</p>
+        <p>Social Globe®</p>
     </footer>
     <script src="assets/js/interaction.js"></script>
     <script src="assets/js/database.js"></script>

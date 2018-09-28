@@ -29,6 +29,7 @@ $result = mysqli_query($mysqli, $query);
 <html style="margin-top:10px;margin-bottom:10px;">
 
 <head>
+    <link rel="shortcut icon" href="assets/img/socialglobe_logo.png" type="image/png"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Social Globe</title>
@@ -41,7 +42,7 @@ $result = mysqli_query($mysqli, $query);
 <body>
     <div>
         <nav id="navbar" class="navbar navbar-light navbar-expand-md navigation-clean-button">
-            <div class="container"><a class="navbar-brand" href="#">Social Globe</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="container"><a class="navbar-brand" href="#"> <img src="assets/img/socialglobe_logo.png" style="width:90px; height:86px"  alt="logo">  </a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse"
                     id="navcol-1">
                     <ul class="nav navbar-nav mr-auto">
@@ -102,12 +103,12 @@ $result = mysqli_query($mysqli, $query);
     </div>
 
     <!-- Chat button -->
-    <div onclick="ToggleChat()" class="chat-button"> 
+    <div onclick="ToggleChat()" class="chat-button">
         <img class="chat-button-image" src="assets/img/chat.png" />
     </div>
 
     <!-- Chat room -->
-    <div class="chat-container"> 
+    <div class="chat-container">
         <h4>Global Chat</h4>
         <div class="chat-messages">
         </div>
@@ -120,14 +121,15 @@ $result = mysqli_query($mysqli, $query);
         <!-- Modal content -->
         <div class="help-modal-content">
         <span onclick="CloseModal()" class="close">&times;</span><br>
-        <h3 id="modal-text" >Some help with the CRUD system</h3><br>
+        <h2 id="modal-text" >Welcome to social globe</h2><br>
+        <h3>Rules:</h3>
         <ul>
-            <li>You can sort users by using the sort menu in the nav bar.</li>
-            <li>By pressing edit you can change user details.</li>
-            <li>By pressing delete you delete that user permanently.</li>
-            <li>By pressing an image next to a user you can change it.</li>
+            <li>No spam</li>
+            <li>No racism</li>
+            <li>love rohied</li>
+
         </ul>
-        <button onclick="CloseModal()" class="btn btn-primary" type="button" style="margin-top:10px;margin-bottom:10px;width: 150px;">I understand</button>
+            <button onclick="CloseModal()" class="modalbutton" style="width:150px;">I understand</button>
         </div>
 
     </div>
@@ -156,7 +158,7 @@ $result = mysqli_query($mysqli, $query);
     </div>
 
     <!-- The temp info box -->
-    <div id="noti-box" class="noti-box"> 
+    <div id="noti-box" class="noti-box">
         <div class="noti-content">
             <p id="noti-text">Some notification to be shown</p>
         </div>
@@ -176,11 +178,11 @@ $result = mysqli_query($mysqli, $query);
     <?php
         if (!$_SESSION['new']) {
         $_SESSION['new'] = true;
-        ?> 
+        ?>
         <script>OpenHelpModal()</script>
     <?php
     }
-    ?> 
+    ?>
     </body>
 
 </html>

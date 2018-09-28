@@ -372,6 +372,7 @@ function scrollDown() {
     scrollTop: $('.chat-messages').get(0).scrollHeight}, 100);
   }
 
+//enter bij de chatroom
   document.getElementById('chat-text-field').addEventListener('keypress', function(event) {
       if (event.keyCode == 13) {
           event.preventDefault();
@@ -379,3 +380,12 @@ function scrollDown() {
 
       }
   });
+
+//enter bij de posts
+document.getElementById('textField').addEventListener('keypress', function(event) {
+    if (event.keyCode == 13) {
+        event.preventDefault();
+        AddPost();
+
+    }
+});
