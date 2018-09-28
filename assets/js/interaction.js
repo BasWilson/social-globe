@@ -277,14 +277,14 @@ function AddPost() {
 function ClearTextFields() {
     //alle add user fields legen
     document.getElementById('textField').value = "";
-    document.getElementById('chat-text-field').value = "";
+    document.getElementById('chat-t ext-field').value = "";
 }
 
 function OpenImageUpload (id) {
 
     //open de image modal
     selectedImageID = id;
-    var img = document.getElementById(id+'img').src;
+    var img = document.getElementById("profile-image").src;
     document.getElementById('modal-image').src = img;
     document.getElementById('pic-id').value = id;
 
@@ -340,7 +340,7 @@ function getRandomInt(max) {
 }
 
 function GetProfile() {
-    $('#loader').show(200);
+    $('#loader').fadeIn(200);
     GetProfileFromServer();
 }
 
@@ -389,8 +389,6 @@ document.getElementById('textField').addEventListener('keypress', function(event
 
     }
 });
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 
 //profile aanpassen
@@ -399,7 +397,3 @@ $('.profile-edit-change').hide(200);
 document.getElementById('profile-edit1-change').style.display = "block";
 
 }
-=======
->>>>>>> parent of 3728d6b... dingen gefixt alleen de php profile werkt niet geen idee wat er fout is
-=======
->>>>>>> parent of 3728d6b... dingen gefixt alleen de php profile werkt niet geen idee wat er fout is

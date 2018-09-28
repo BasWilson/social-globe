@@ -236,7 +236,7 @@ footer {
     padding: 20px;
     margin: 10px;
     border-radius: 12px;
-    background-color: rgba(255, 115, 0, 0.2);
+    background-color: #56c6c6;
 }
 
 .profile-image {
@@ -251,6 +251,15 @@ footer {
 .profile-edit-button img{
     width: 25px;
 }
+
+.profile-edit-change{
+  display: block;
+}
+#profile-edit1-change{
+  display: none;
+}
+
+
 .card-item {
     margin-bottom: 20px;
 }

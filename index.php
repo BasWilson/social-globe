@@ -134,28 +134,7 @@ $result = mysqli_query($mysqli, $query);
 
     </div>
 
-    <!-- The Image Upload Modal -->
-    <div id="image-modal-popup" class="image-modal">
-
-        <!-- Modal content -->
-        <div class="image-modal-content">
-        <span onclick="CloseModal()" class="close">&times;</span><br>
-        <h3 id="image-modal-text" >Upload a new image for this user.</h3><br>
-        <img id="modal-image" style="width: 200px; border-radius: 8px; margin-bottom: 20px;" />
-        <p>Pick new image (You might need to refresh the page after changing an image.)</p>
-        <p>Image requirements:</p>
-        <ul>
-            <li>Smaller than 500KB.</li>
-            <li>One of these formats: 'jpeg', 'jpg', 'png', 'gif', 'bmp'.</li>
-        </ul>
-        <form id="image-form" method="post" enctype="multipart/form-data">
-            <input id="uploadImage" type="file" accept="image/*" name="image"/><br><br>
-            <input type="name" id="pic-id" name="id" style="display: none;">
-            <input class="btn btn-success" type="submit" value="Upload">
-        </form>
-        </div>
-
-    </div>
+  
 
     <!-- The temp info box -->
     <div id="noti-box" class="noti-box">
