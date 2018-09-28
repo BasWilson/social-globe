@@ -178,7 +178,7 @@ function VerifyLoginWithDatabase (email, password) {
 function RefreshPosts() {
 
 
-    $('#loader').fadeIn(200); // verstop de table
+    $('#loader').show(200); // verstop de table
     $('#postContainer').hide('slow'); // verstop de table
     setTimeout(function () {
       $('#postContainer').empty(); // leeg de table
@@ -192,7 +192,7 @@ function RefreshPosts() {
             setTimeout(function () {
                 $('#postContainer').append(data); // voeg de nieuwe data weer toe
                 $('#postContainer').show('slow'); // laat dweer zien
-                $('#loader').fadeOut(200); // verstop de table
+                $('#loader').hide(200); // verstop de table
 
             },500)
         } else {
@@ -239,12 +239,9 @@ $(document).ready(function (e) {
        if(data == 1) {
             //Upload compleet
             CloseModal();
-            ShowNotiBox(1500, "Image is uploaded.", true);
-            setTimeout(function () {
-              location.reload();
-            },1500)
+            ShowNotiBox(3000, "Image is uploaded.", true);
+            RefreshUsers();
             $("#image-form")[0].reset();
-
 
        }
        else {
@@ -263,18 +260,18 @@ $(document).ready(function (e) {
    function GetProfileFromServer () {
     $('#profile-container').hide('fast'); // verstop de table
     setTimeout(function () {
-      $('.profile-card').remove();
+      $('#profile-conatiner').empty(); // leeg de table
     },500)
 
     $.ajax({
         type: "POST",
-            url: 'includes/loadProfile.php',
+        url: 'includes/loadProfile.php',
         success:function(data) {
            if (data != null) {
             setTimeout(function () {
                 $('#profile-container').append(data); // voeg de nieuwe data weer toe
                 $('#profile-container').show('fast'); // laat dweer zien
-                $('#loader').fadeOut(200); // laat dweer zien
+                $('#loader').hide(200); // laat dweer zien
             },500)
         } else {
             // er is iets fout gegaan
@@ -285,4 +282,4 @@ $(document).ready(function (e) {
    }
 
 
-   
+  

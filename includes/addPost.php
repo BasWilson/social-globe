@@ -19,9 +19,11 @@ if (Validate($post, $email, $color)) {
 
     if ($row = mysqli_fetch_array($result)) {
 
+        $name = $row['first_name'] . " " . $row['last_name'];
+        $profile_pic = $row['profile_pic'];
         $color = $color . '0.4)';
 
-        $query = "INSERT INTO posts VALUES (null,'$email','$post',null, '$color', 0)";
+        $query = "INSERT INTO posts VALUES (null,'$email','$post',null, '$name', '$profile_pic', '$color', 0)";
 
         if (mysqli_query($mysqli,$query))
         {

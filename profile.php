@@ -80,6 +80,7 @@ $result = mysqli_query($mysqli, $query);
         <div class="row">
             <img id="loader" src="assets/img/loading.svg" />
             <div id="profile-container" class="col-md-12">
+
             </div>
         </div>
     </div>
