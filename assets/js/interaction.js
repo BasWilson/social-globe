@@ -277,7 +277,7 @@ function AddPost() {
 function ClearTextFields() {
     //alle add user fields legen
     document.getElementById('textField').value = "";
-    document.getElementById('chat-t ext-field').value = "";
+    document.getElementById('chat-text-field').value = "";
 }
 
 function OpenImageUpload (id) {

@@ -20,7 +20,7 @@ if(!empty($_POST['id']) || $_FILES['image'])
     if(in_array($ext, $valid_extensions)) {
 
         //Kijk of het bestand minder dan 500kb is
-        if($_FILES['image']['size'] < 500000){
+        if($_FILES['image']['size'] < 1000000){
 
             $path = $path.strtolower($final_image);
 
@@ -43,7 +43,7 @@ if(!empty($_POST['id']) || $_FILES['image'])
             }
 
         } else {
-            echo 'File size is larger than 500KB';
+            echo 'File size is larger than 1000KB';
         }
 
     } else {

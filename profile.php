@@ -132,13 +132,13 @@ $result = mysqli_query($mysqli, $query);
         <p>Pick new image (You might need to refresh the page after changing an image.)</p>
         <p>Image requirements:</p>
         <ul>
-            <li>Smaller than 500KB.</li>
+            <li>Smaller than 1000KB.</li>
             <li>One of these formats: 'jpeg', 'jpg', 'png', 'gif', 'bmp'.</li>
         </ul>
         <form id="image-form" method="post" enctype="multipart/form-data">
             <input id="uploadImage" type="file" accept="image/*" name="image"/><br><br>
             <input type="name" id="pic-id" name="id" style="display: none;">
-            <input class="btn btn-success" type="submit" value="Upload">
+            <input  style="background-color:#56c6c6;border-color:#56c6c6;color:white;" class="btn btn-succes" type="submit" value="Upload">
         </form>
         </div>
 

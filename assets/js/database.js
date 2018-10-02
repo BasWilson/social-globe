@@ -285,4 +285,24 @@ $(document).ready(function (e) {
    }
 
 
-   
+   function ChangeProfile(post) {
+
+       $.ajax({
+            type: "POST",
+            url: 'includes/changeProfile.php',
+            data:{
+                post: post
+               },
+            success:function(data) {
+               if (data == 1) {
+                   //posts gedaan
+                   ShowNotiBox(1500, "Posted", true);
+                   if (window.location.pathname == "/social-globe/profile.php") {
+                   }
+               } else {
+                   //De login was waarschijnlijk niet goed
+                   ShowNotiBox(1500, "Please try to log in again", false);
+               }
+           }, dataType: 'json'
+       });
+   }

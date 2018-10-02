@@ -5,53 +5,30 @@
     echo '
     <div class="profile-card">
         <img id="profile-image" onclick="OpenImageUpload()" src="profile_pics/'.$_SESSION['profile_pic'].'" class="profile-image card-item" />
-        <p>click on the picture to upload your post </p><br>
+        <p>click on the picture to upload your profile picture </p><br>
 
-<div class="profile-edit-change">
+  <div class="profile-edit-change">
 
-        <p> Name: </p>
-        <p class="card-item">'. $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] .'</p><br>
-        <p> Email: </p>
-        <p class="card-item">'. $_SESSION['email'] .'</p>
-        <a class="profile-edit-button" onclick="EditProfile()"><img src="assets/img/edit.png"/></a>
+  <label>First Name</label><br>
+    <input type="text" class="form-control" name="first_name" value=" '.$_SESSION['first_name'].'" readonly> <br>
+  <label>Last Name</label><br>
+    <input type="text" class="form-control" name="last_name" value=" '.$_SESSION['last_name'].'" readonly> <br>
+  <a class="profile-edit-button" onclick="EditProfile()"><img src="assets/img/edit.png"/></a>
+    </div>
+
+
+
+  <div id="profile-edit1-change">
+
+<form name="form1" method="post" action="">
+<label>First Name</label><br>
+  <input type="text" class="form-control" name="first_name" value=" '.$_SESSION['first_name'].'"> <br>
+<label>Last Name</label><br>
+  <input type="text" class="form-control" name="last_name" value=" '.$_SESSION['last_name'].'"> <br>
+<input style="width:25px;" onclick="ChangeProfile()" class="profile-edit-button" type="image" src="assets/img/checkmark.png" alt="profilebutton" />
+</form>
+</div>
 </div>
 
 ';
-echo "<div id='profile-edit1-change'>";
-
-
-
-$userid = $_SESSION['id'];
-
-$query = "SELECT * FROM users WHERE id = '$userid'";
-
-
-$resultaat = mysqli_query($mysqli, $query);
-
-if (mysqli_num_rows($resultaat)==0) {
-header("Location: profile.php");
-}
-else {
-  $rij = mysqli_fetch_array($resultaat);
-?>
-
-
-<input type="text" name="first_name" value="<?php echo $rij['first_name'] ?>">
-
-<input type="text" name="last_name" value="<?php echo $rij['last_name'] ?>">
-
-<input type="text" name="email" value="<?php echo $rij['email'] ?>">
-
-<input type="submit" name="submit" value="Opslaan">
-
-
-
-
-}
-
-<p> suck penis </p>
-<a class="profile-edit-button" onclick="EditProfile()"><img src="assets/img/checkmark.png"/></a>
-</div>
-
-</div>
 }
