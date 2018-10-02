@@ -20,11 +20,11 @@
 
   <div id="profile-edit1-change">
 
-<form name="form1" method="post" action="">
+<form>
 <label>First Name</label><br>
-  <input type="text" class="form-control" name="first_name" value=" '.$_SESSION['first_name'].'"> <br>
+  <input type="text" class="form-control" id="editProfileFN" value=" '.$_SESSION['first_name'].'"> <br>
 <label>Last Name</label><br>
-  <input type="text" class="form-control" name="last_name" value=" '.$_SESSION['last_name'].'"> <br>
+  <input type="text" class="form-control" id="editProfileLN" value=" '.$_SESSION['last_name'].'"> <br>
 <input style="width:25px;" onclick="ChangeProfile()" class="profile-edit-button" type="image" src="assets/img/checkmark.png" alt="profilebutton" />
 </form>
 </div>

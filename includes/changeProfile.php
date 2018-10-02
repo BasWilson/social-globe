@@ -27,7 +27,7 @@ echo false;
 }
 else
 {
-echo "<p>Geen gegevens ontvangen...</p>";
+echo false;
 }
 
 echo "<p><a href='../index.php'>TERUG</a> naar overzicht</p>"; ?>
