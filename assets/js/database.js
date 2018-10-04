@@ -286,10 +286,11 @@ $(document).ready(function (e) {
 
 
    function ChangeProfile() {
-
+        console.log($("#editProfileFN").val())
+        console.log($("#editProfileLN").val())
        $.ajax({
             type: "POST",
-            url: 'includes/changeProfile.php',
+            url: 'includes/updateUser.php',
             data:{
                 fn: $("#editProfileFN").val(),
                 ln: $("#editProfileLN").val()
@@ -298,8 +299,9 @@ $(document).ready(function (e) {
                if (data == 1) {
                    //posts gedaan
                    ShowNotiBox(1500, "Updated", true);
-                   if (window.location.pathname == "/social-globe/profile.php") {
-                   }
+                   $("#first_name").val($("#editProfileFN").val());
+                   $("#last_name").val($("#editProfileLN").val());
+                   EditProfile();
                } else {
                    //De login was waarschijnlijk niet goed
                    ShowNotiBox(1500, "Please try again", false);
