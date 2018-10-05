@@ -242,6 +242,12 @@ footer {
 .profile-image {
     border-radius: 12px;
     width: 100px;
+    transition: transform .2s;
+}
+
+.profile-image:hover {
+    transform: scale(1.1);
+    cursor: pointer;
 }
 
 .profile-edit-button {
@@ -327,3 +333,5 @@ footer {
     margin-left: 10px;
     cursor: pointer;
 }
+
+
