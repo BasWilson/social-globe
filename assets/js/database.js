@@ -368,3 +368,58 @@ $(document).ready(function (e) {
    });
 
    }
+
+   
+   function ResetPassword(type) {
+
+    pass = "";
+    username = "";
+    reset_id = "";
+
+    var params = new URLSearchParams(document.location.search.substring(1));
+    var id = params.get("id");
+
+    if (type == "reset") {
+        $('#reset-container').hide(200);
+        pass = $('#resetPasswordField').val();
+        username = $('#resetUsernameField').val();
+        reset_id = id;
+        $("#loader").toggle(300);
+    } else if (type == "email") {
+        username = $('#resetUsernameField').val();
+        $("#loader").toggle(300);
+    } else if (type == "verify") {
+        reset_id = id;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: 'includes/passwordReset.php',
+        data: {
+            username: username,
+            reset_id: reset_id,
+            type: type,
+            password: pass
+        },
+        success:function(data) {
+            console.log(data)
+           if (data == 1) {
+               //posts gedaan
+               ShowNotiBox(3000, "An email has been sent to reset the password", true);      
+                $("#loader").toggle(300);
+           } else if (data == 2) {
+                ShowNotiBox(1500, "Password has been reset", true);      
+                setTimeout(function () {
+                    window.location.href = "login.php";
+                },2000);
+           } else {
+               //De login was waarschijnlijk niet goed
+               ShowNotiBox(2000, "Cannot reset, try again.", false);
+                $('#reset-container').show(200);
+                $("#loader").toggle(300);
+
+           }
+       }, dataType: 'json'
+   });
+
+   }

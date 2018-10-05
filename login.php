@@ -19,6 +19,15 @@
             </div>
         </nav>
     </div>
+    <div style="display: none;" id="reset-container" class="login-clean">
+        <form style="text-align: center">
+            <h3 style="margin-bottom: 20px;" >Reset password</h3>
+            <div class="form-group"><input class="form-control" type="username" id="resetUsernameField" placeholder="Current username"></div>
+            <div class="form-group"><a class="modalbutton" style="color:white; cursor:pointer;" onclick="ResetPassword('email')">Reset Password</a></div>
+            <a style="cursor: pointer;" onclick="SwitchLoginScreen(1)">I remembered, go back!</a>
+        </form>
+    </div>
+
         <!-- The login box -->
     <div id="login-container" class="login-clean">
         <form style="text-align: center">
@@ -26,7 +35,8 @@
             <div class="form-group"><input class="form-control" type="username" id="usernameFieldLogIn" placeholder="Username"></div>
             <div class="form-group"><input class="form-control" type="password" id="passwordFieldLogIn" placeholder="Password"></div>
             <div class="form-group"><a class="modalbutton" style="color:white; cursor:pointer;" onclick="UserLogin()">Log In</a></div>
-            <a style="cursor: pointer;" onclick="SwitchLoginScreen(0)">New user? Sign up instead.</a>
+            <a style="cursor: pointer;" onclick="SwitchLoginScreen(0)">New user? Sign up instead.</a><br>
+            <a style="cursor: pointer;" onclick="SwitchLoginScreen(2)">I forgot my password.</a>
         </form>
     </div>
 
@@ -44,7 +54,8 @@
             <div class="form-group"><input class="form-control" type="email" id="emailFieldSignUp" placeholder="Email"></div>
             <div class="form-group"><input class="form-control" type="password" id="passwordFieldSignUp" placeholder="Password"></div>
             <div class="form-group"><a class="modalbutton" style="cursor: pointer;"  style="color:white;" onclick="UserSignUp()">Sign up</a></div>
-            <a style="cursor: pointer;" onclick="SwitchLoginScreen(1)">Returning user? Log in.</a>
+            <a style="cursor: pointer;" onclick="SwitchLoginScreen(1)">Returning user? Log in.</a><br>
+            <a style="cursor: pointer;" onclick="SwitchLoginScreen(2)">I forgot my password.</a>
         </form>
     </div>
 

@@ -41,10 +41,17 @@ function OpenNewPost () {
 function SwitchLoginScreen(currentLoginScreen) {
     if (currentLoginScreen == 0) {
         $('#login-container').hide("fast");
+        $('#reset-container').hide("fast");
         $('#signup-container').show("fast");
-    } else {
+    } else if (currentLoginScreen == 1)  {
         $('#login-container').show("fast");
         $('#signup-container').hide("fast");
+        $('#reset-container').hide("fast");
+    }
+    else if (currentLoginScreen == 2)  {
+        $('#login-container').hide("fast");
+        $('#signup-container').hide("fast");
+        $('#reset-container').show("fast");
     }
 
 }

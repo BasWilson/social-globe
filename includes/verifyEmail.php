@@ -13,8 +13,6 @@ if ($row = mysqli_fetch_array($result)) {
 
     $user_id = $row['id'];
     $query_update = "UPDATE users SET verified = 1 WHERE id = $user_id";
-    ChromePhp::Log($user_id);
-    ChromePhp::Log($query_update);
 
     if (mysqli_query($mysqli, $query_update)) {
         $_SESSION['verified'] = 1;
