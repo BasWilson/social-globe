@@ -6,22 +6,22 @@ session_start();
 
 $post = $_POST['post'];
 $color = $_POST['color'];
-$email = $_SESSION['email'];
+$username = $_SESSION['username'];
 
 //Door de validate functie krijgen we uit de data of het compleet en correct is
-if (Validate($post, $email, $color)) {
+if (Validate($post, $username, $color)) {
 
     //Maak de datum van vandaag als de lid sinds waarde
 
 
-    $queryP = "SELECT first_name, last_name, profile_pic FROM users WHERE email = '$email'";
+    $queryP = "SELECT first_name, last_name, profile_pic FROM users WHERE username = '$username'";
     $result = mysqli_query($mysqli, $queryP);
 
     if ($row = mysqli_fetch_array($result)) {
 
         $color = $color . '0.4)';
 
-        $query = "INSERT INTO posts VALUES (null,'$email','$post',null, '$color', 0)";
+        $query = "INSERT INTO posts VALUES (null,'$username','$post',null, '$color', 0)";
 
         if (mysqli_query($mysqli,$query))
         {
@@ -42,11 +42,10 @@ if (Validate($post, $email, $color)) {
 }
 
 //Door de validate functie krijgen we uit de data of het compleet en correct is
-function Validate ($post, $email, $color) {
+function Validate ($post, $username, $color) {
 
     //Check of de waarden niet leeg zijn
-    if ($post != "" && $email != "") {
-        ChromePhp::log("Not empty");
+    if ($post != "" && $username != "") {
                 return true;
     } else {
         echo "Make sure you entered a post";

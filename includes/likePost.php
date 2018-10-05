@@ -4,17 +4,17 @@
   session_start();
   $post_id = $_POST['likeId'];
   $user_id = $_SESSION['id'];
-  $email = $_SESSION['email'];
+  $username = $_SESSION['username'];
   $name = $_SESSION['first_name'] . " " . $_SESSION['last_name'];
   $query = "";
-if(isset($post_id) || isset($email) || isset($name) || isset($user_id)) {
+if(isset($post_id) || isset($username) || isset($name) || isset($user_id)) {
   //Alle data is er
-  AddLike($post_id, $email, $name, $user_id);
+  AddLike($post_id, $username, $name, $user_id);
 } else {
   echo "not set";
 }
 
-function AddLike($post_id, $email, $name, $user_id) {
+function AddLike($post_id, $username, $name, $user_id) {
 
   require 'config.php';
 

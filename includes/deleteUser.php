@@ -13,7 +13,7 @@ function DeleteUser($id) {
 
   require 'config.php';
 
-  $query = "DELETE FROM mphp4_leden WHERE id = $id";
+  $query = "DELETE FROM users WHERE id = $id";
 
   if (mysqli_query($mysqli, $query)) {
     echo true; // laat ajax weten

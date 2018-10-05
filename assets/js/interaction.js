@@ -232,11 +232,11 @@ function ShowNotiBox (duration, text, status) {
 function UserLogin() {
 
     //Log in aanvraag via ajax versturen
-    let e = document.getElementById('emailFieldLogIn').value;
+    let u = document.getElementById('usernameFieldLogIn').value;
     let p = document.getElementById('passwordFieldLogIn').value;
-    if (e != "" && p != "") {
+    if (u != "" && p != "") {
         //Fields are not empty, allow login
-        VerifyLoginWithDatabase(e, p);
+        VerifyLoginWithDatabase(u, p);
         $(".login-clean").hide('fast');
     } else {
         $(".login-clean").show('fast');
@@ -251,11 +251,12 @@ function UserSignUp() {
     let ln = document.getElementById('lnFieldSignUp').value;
     let dob = document.getElementById('dateFieldSignUp').value;
     let email = document.getElementById('emailFieldSignUp').value;
+    let username = document.getElementById('usernameFieldSignUp').value;
     let password = document.getElementById('passwordFieldSignUp').value;
 
-    if (fn != "" && ln != "" && dob != "" && email != "" && password != "") {
+    if (fn != "" && ln != "" && dob != "" && email != "" && password != "" && username != "") {
         //User toeveoegen via ajax
-        VerifySignUpWithDatabase(fn, ln, dob, email, password);
+        VerifySignUpWithDatabase(fn, ln, dob, email, username, password);
         $(".login-clean").hide('fast');
     } else {
         SwitchLoginScreen(0);
@@ -393,6 +394,6 @@ document.getElementById('textField').addEventListener('keypress', function(event
 
 //profile aanpassen
 function EditProfile(){
-    $('.profile-edit-change').toggle();
-    $('#profile-edit1-change').toggle();
+    $('#profile-view').toggle();
+    $('#profile-edit').toggle();
 }

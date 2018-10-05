@@ -120,7 +120,8 @@ function AddChatToDatabase(message) {
 }
 
 
-function VerifySignUpWithDatabase(fn, ln, dob, email, password) {
+function VerifySignUpWithDatabase(fn, ln, dob, email, username, password) {
+    $("#loader").toggle(300);
 
     $.ajax({
          type: "POST",
@@ -129,13 +130,15 @@ function VerifySignUpWithDatabase(fn, ln, dob, email, password) {
              fn: fn,
              ln: ln,
              dob: dob,
-             email: email,
+            username: username,
+            email: email,
              password: password
             },
          success:function(data) {
             if (data == 1) {
                 //Login in was goed
                 ShowNotiBox(1500, "Signed up succesfully", true);
+                $("#loader").toggle(300);
                 setTimeout(function () {
                     window.location.href = "index.php";
                 },2000);
@@ -144,18 +147,19 @@ function VerifySignUpWithDatabase(fn, ln, dob, email, password) {
                 $(".login-clean").show('fast');
                 SwitchLoginScreen(0);
                 ShowNotiBox(3000, data, false);
+                $("#loader").toggle(300);
             }
         }
     });
 }
 
-function VerifyLoginWithDatabase (email, password) {
+function VerifyLoginWithDatabase (username, password) {
     console.log('trying to log in');
     $.ajax({
          type: "POST",
          url: 'includes/loginUser.php',
          data:{
-            email: email,
+            username: username,
             password: password
         },
          success:function(data) {
@@ -286,21 +290,21 @@ $(document).ready(function (e) {
 
 
    function ChangeProfile() {
-        console.log($("#editProfileFN").val())
-        console.log($("#editProfileLN").val())
+
        $.ajax({
             type: "POST",
             url: 'includes/updateUser.php',
             data:{
                 fn: $("#editProfileFN").val(),
-                ln: $("#editProfileLN").val()
+                ln: $("#editProfileLN").val(),
+                u: $("#editProfileU").val()
                },
             success:function(data) {
                if (data == 1) {
                    //posts gedaan
-                   ShowNotiBox(1500, "Updated", true);
-                   $("#first_name").val($("#editProfileFN").val());
-                   $("#last_name").val($("#editProfileLN").val());
+                   ShowNotiBox(1500, "Profile has been updated", true);
+                   $("#username").html($("#editProfileU").val());
+                   $("#name").html($("#editProfileFN").val() + " " + $("#editProfileLN").val());
                    EditProfile();
                } else {
                    //De login was waarschijnlijk niet goed
@@ -308,4 +312,59 @@ $(document).ready(function (e) {
                }
            }, dataType: 'json'
        });
+   }
+
+
+   function VerifyEmail() {
+    var params = new URLSearchParams(document.location.search.substring(1));
+    var id = params.get("id");
+
+    $.ajax({
+        type: "POST",
+        url: 'includes/verifyEmail.php',
+        data:{
+            id: id
+           },
+        success:function(data) {
+           if (data == 1) {
+               //posts gedaan
+               ShowNotiBox(1500, "Email has been verified", true);
+               setTimeout(function () {
+                    window.location.href = "index.php";
+                },2000);
+           } else {
+               //De login was waarschijnlijk niet goed
+               ShowNotiBox(1500, "Verification token is not valid", false);
+               setTimeout(function () {
+                window.location.href = "resend-verification.php";
+            },2000);
+           }
+       }, dataType: 'json'
+   });
+
+   }
+
+   function ResendVerificationEmail() {
+
+    $(".profile-card").toggle(300);
+    $("#loader").toggle(300);
+    $.ajax({
+        type: "POST",
+        url: 'includes/resendVerificationEmail.php',
+        success:function(data) {
+            console.log("WE HERE")
+           if (data == 1) {
+               //posts gedaan
+               ShowNotiBox(3000, "A new verification email has been sent", true);      
+                $("#loader").toggle(300);
+           } else {
+               //De login was waarschijnlijk niet goed
+               ShowNotiBox(2000, "Cannot send verification email, try again.", false);
+               $(".profile-card").toggle(300);
+                $("#loader").toggle(300);
+
+           }
+       }, dataType: 'json'
+   });
+
    }

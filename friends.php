@@ -1,27 +1,8 @@
 <?php
-session_start();
+require 'includes/checkUser.php';
 
-if(!$_SESSION['email']){
-  header("Location: login.php");
-} else {
-  ?>
-  <style media="screen">
-    #logout-btn {
-      display: flex;
-    }
-  </style>
-  <?php
-  }
-if($_SESSION['email']){
+LoginOkay();
 
-
-require 'includes/config.php';
-include 'log.php';
-
-$query = 'SELECT * FROM users ORDER BY first_name';
-
-$result = mysqli_query($mysqli, $query);
-}
 ?>
 <!DOCTYPE html>
 

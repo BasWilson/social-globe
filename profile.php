@@ -1,27 +1,8 @@
 <?php
-session_start();
+require 'includes/checkUser.php';
 
-if(!$_SESSION['email']){
-  header("Location: login.php");
-} else {
-  ?>
-  <style media="screen">
-    #logout-btn {
-      display: flex;
-    }
-  </style>
-  <?php
-  }
-if($_SESSION['email']){
+LoginOkay();
 
-
-require 'includes/config.php';
-include 'log.php';
-
-$query = 'SELECT * FROM users ORDER BY first_name';
-
-$result = mysqli_query($mysqli, $query);
-}
 ?>
 <!DOCTYPE html>
 
@@ -80,6 +61,27 @@ $result = mysqli_query($mysqli, $query);
         <div class="row">
             <img id="loader" src="assets/img/loading.svg" />
             <div id="profile-container" class="col-md-12">
+                <div class="profile-card">
+                        <img id="profile-image" onclick="OpenImageUpload()" src="profile_pics/<?php echo $_SESSION['profile_pic'];?>" class="profile-image card-item" />
+                        <p>Click on the picture to change your profile picture </p>
+
+                    <div id="profile-view">
+                        <p>Username  <strong><span id="username""><?php echo $_SESSION['username'];?></span></strong></p>
+                        <p>Name  <strong><span id="name""><?php echo $_SESSION['first_name'] . " " .  $_SESSION['last_name'];?></span></strong></p>
+                        <a class="profile-edit-button" onclick="EditProfile()"><img src="assets/img/edit.png"/></a>
+                    </div>
+
+                    <div style="display: none;"" id="profile-edit">
+                        <label>Username</label><br>
+                        <input type="text" class="form-control" id="editProfileU" value="<?php echo $_SESSION['username']; ?>"> <br>
+                        <label>First Name</label><br>
+                        <input type="text" class="form-control" id="editProfileFN" value="<?php echo $_SESSION['first_name']; ?>"> <br>
+                        <label>Last Name</label><br>
+                        <input type="text" class="form-control" id="editProfileLN" value="<?php echo $_SESSION['last_name']; ?>"> <br>
+                        <input style="width:25px;" onclick="ChangeProfile()" class="profile-edit-button" type="image" src="assets/img/checkmark.png" alt="profilebutton" />
+                    </div>
+                </div>
+                </div>
             </div>
         </div>
     </div>
@@ -159,7 +161,7 @@ $result = mysqli_query($mysqli, $query);
     <script src="assets/js/jscolor.js"></script>
     <script src="assets/js/database.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/js/bootstrap.bundle.min.js"></script>
-    <script>GetProfile();</script>
+    <script>//GetProfile();</script>
     <?php
         if (!$_SESSION['new']) {
         $_SESSION['new'] = true;

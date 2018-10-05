@@ -23,14 +23,16 @@
     <div id="login-container" class="login-clean">
         <form style="text-align: center">
             <h3 style="margin-bottom: 20px;" >Returning user</h3>
-            <div class="form-group"><input class="form-control" type="email" id="emailFieldLogIn" placeholder="Email"></div>
+            <div class="form-group"><input class="form-control" type="username" id="usernameFieldLogIn" placeholder="Username"></div>
             <div class="form-group"><input class="form-control" type="password" id="passwordFieldLogIn" placeholder="Password"></div>
-            <div class="form-group"><a class="modalbutton" style="color:white;" onclick="UserLogin()">Log In</a></div>
+            <div class="form-group"><a class="modalbutton" style="color:white; cursor:pointer;" onclick="UserLogin()">Log In</a></div>
             <a style="cursor: pointer;" onclick="SwitchLoginScreen(0)">New user? Sign up instead.</a>
         </form>
     </div>
 
         <!-- The signup box -->
+        <img id="loader" src="assets/img/loading.svg" />
+
     <div style="display: none;" id="signup-container" class="login-clean">
         <form style="text-align: center">
         <h3 style="margin-bottom: 20px;" >New user</h3>
@@ -38,9 +40,10 @@
             <div class="form-group"><input class="form-control" type="name" id="lnFieldSignUp" placeholder="Surname"></div>
             <p style="margin-top:10px;margin-bottom:10px; text-align: left !important;"><strong>Birth date</strong></p>
             <div class="form-group"><input class="form-control" type="date" id="dateFieldSignUp" placeholder="Date of birth"></div>
+            <div class="form-group"><input class="form-control" type="email" id="usernameFieldSignUp" placeholder="Username"></div>
             <div class="form-group"><input class="form-control" type="email" id="emailFieldSignUp" placeholder="Email"></div>
             <div class="form-group"><input class="form-control" type="password" id="passwordFieldSignUp" placeholder="Password"></div>
-            <div class="form-group"><a class="modalbutton" style="color:white;" onclick="UserSignUp()">Sign up</a></div>
+            <div class="form-group"><a class="modalbutton" style="cursor: pointer;"  style="color:white;" onclick="UserSignUp()">Sign up</a></div>
             <a style="cursor: pointer;" onclick="SwitchLoginScreen(1)">Returning user? Log in.</a>
         </form>
     </div>

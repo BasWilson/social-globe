@@ -13,11 +13,11 @@
 
     while ($row = mysqli_fetch_array($result))
     {
-      $email = $row['email'];
-      $query2 = "SELECT profile_pic,first_name,last_name FROM users WHERE email = '$email'";
+      $username = $row['username'];
+      $query2 = "SELECT profile_pic, username FROM users WHERE username = '$username'";
       $result2 = mysqli_query($mysqli, $query2);
       if ($row2 = mysqli_fetch_array($result2)) {
-        $name = $row2['first_name'] . " " . $row2['last_name'];
+        $name = $row2['username'];
         $likes = "";
         if ($row['likes'] == 1) {
             $likes = $row['likes'] . " like";
