@@ -30,7 +30,7 @@ if (Validate($name, $dob, $lastname, $email, $password, $username)) {
 
     $email_id = rand(0, 1000000000) + rand(0, 1000000000);
     
-    $query = "INSERT INTO users VALUES ('$username', '$name','$lastname','$email','$dob','$hashedPass', '$date', '$genderPic', NULL, '$email_id', 0)";
+    $query = "INSERT INTO users VALUES ('$username', '$name','$lastname','$email','$dob','$hashedPass', '$date', '$genderPic', NULL, '$email_id', 0, NULL)";
 
     if (mysqli_query($mysqli,$query))
     {
