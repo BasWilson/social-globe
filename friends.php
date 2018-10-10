@@ -29,7 +29,7 @@ LoginOkay();
                         <li class="nav-item" role="presentation"><a class="nav-link" href="index.php">The Globe</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="profile.php">Profile</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Friends</a></li>
-                        <li class="nav-item" role="presentation"><span onclick="OpenHelpModal()" style="cursor: pointer"><a class="nav-link">Help</a></span></li>
+                        <li class="nav-item" role="presentation"><span onclick="OpenHelpModal()" style="cursor: pointer"><a class="nav-link">New features</a></span></li>
                         <li>
                         </ul><span class="navbar-text actions"> <a href="logout.php" class="login">Sign out</a><a class="btn btn-light action-button" role="button" onclick="OpenNewPost()">New post</a></span></div>
             </div>
@@ -78,12 +78,11 @@ LoginOkay();
         <!-- Modal content -->
         <div class="help-modal-content">
         <span onclick="CloseModal()" class="close">&times;</span><br>
-        <h2 id="modal-text" >Welcome to social globe</h2><br>
-        <h3>Rules:</h3>
+        <h2 id="modal-text" >Welcome to The Social Globe</h2><br>
+        <h3>New features!</h3>
         <ul>
-            <li>No spam</li>
-            <li>No racism</li>
-            <li>love rohied</li>
+            <li>You can now visit people their profile (BETA)</li>
+            <li>You can now follow people by visiting their profile (BETA)</li>
 
         </ul>
             <button onclick="CloseModal()" class="modalbutton" type="button" style="width:150px;">I understand</button>

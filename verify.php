@@ -23,7 +23,7 @@
                         <li class="nav-item" role="presentation"><a class="nav-link" href="index.php">The Globe</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Profile</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="friends.php">Friends</a></li>
-                        <li class="nav-item" role="presentation"><span onclick="OpenHelpModal()" style="cursor: pointer"><a class="nav-link">Help</a></span></li>
+                        <li class="nav-item" role="presentation"><span onclick="OpenHelpModal()" style="cursor: pointer"><a class="nav-link">New features</a></span></li>
                         <li>
                         </ul><span class="navbar-text actions"> <a href="logout.php" class="login">Sign out</a><a class="btn btn-light action-button" role="button" onclick="OpenNewPost()">New post</a></span></div>
             </div>

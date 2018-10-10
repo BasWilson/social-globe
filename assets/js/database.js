@@ -288,6 +288,38 @@ $(document).ready(function (e) {
    });
    }
 
+   
+   function GetUserProfile () {
+
+    var params = new URLSearchParams(document.location.search.substring(1));
+    var id = params.get("user_id");
+
+    $('#profile-container').hide('fast');
+    setTimeout(function () {
+      $('.profile-card').remove();
+    },500)
+
+    $.ajax({
+        type: "POST",
+        url: 'includes/getUser.php',
+        data: {
+            user_id: id
+        },
+        success:function(data) {
+           if (data != null) {
+            setTimeout(function () {
+                $('#profile-container').append(data); // voeg de nieuwe data weer toe
+                $('#profile-container').show('fast'); // laat dweer zien
+                $('#loader').fadeOut(200); // laat dweer zien
+            },500)
+        } else {
+            // er is iets fout gegaan
+               ShowNotiBox(3000, "Oops, something went wrong, profile could not be fetched", false);
+           }
+        }
+   });
+   }
+
 
    function ChangeProfile() {
 
@@ -423,3 +455,28 @@ $(document).ready(function (e) {
    });
 
    }
+
+
+   function FollowUser (username) {
+    console.log('trying to add friend');
+    $.ajax({
+         type: "POST",
+         url: 'includes/followUser.php',
+         data:{
+            username: username
+        },
+         success:function(data) {
+            if (data == 1) { // 1 is a public account
+                ShowNotiBox(2000, `You are now following ${username}`, true);
+            } else if (data == 2) {
+                ShowNotiBox(2500, `You have requested to follow ${username}`, true);
+            } else if (data == 3) {
+                ShowNotiBox(2500, `You are already following ${username}`, false);
+            } else if (data == 4) {
+                ShowNotiBox(5000, `Trying to follow yourself? Don't worry it's okay to be lonely.`, false);
+            } else {
+                ShowNotiBox(3000, `Oops, could not follow ${username} at this time`, false);
+            }
+        }, dataType: 'json'
+    });
+}

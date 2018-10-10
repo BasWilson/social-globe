@@ -24,7 +24,16 @@
         } else {
             $likes = $row['likes'] . " likes";
         }
-             echo "<div style='background-color:". $row['color'] . " 'class='postDiv'><div class='postHeader'><img src=".'profile_pics/' . $row2['profile_pic'] . " /><strong><p><xmp>".$name."</xmp></p></strong></div> <p><xmp>" . $row['post'] . "</xmp></p><div class='like-container'><a onclick='LikePost(this.id)'class='like-button' id='" . $row['post_id'] . "'><span></span><p><strong>❤️ <span id='likes" . $row['post_id'] . "'>" . $likes . "</span></strong></p></a></div><p>Posted on " . $row['post_time'] . "</p></div>";
+             echo "<div style='background-color:". $row['color'] . " 'class='postDiv'>
+             <div class='postHeader'>
+             <img src=".'profile_pics/' . $row2['profile_pic'] . " />
+             <strong><a style='color: black;' href='user.php?user_id=". $username ."'><xmp>".$name."</xmp></a></strong></div> <p><xmp>" . $row['post'] . "</xmp></p>
+             <div class='like-container'>
+             <a onclick='LikePost(this.id)'class='like-button' id='" . $row['post_id'] . "'>
+             <span></span><p><strong>❤️ <span id='likes" . $row['post_id'] . "'>" . $likes . "</span></strong></p>
+             </a>
+             </div>
+             <p>Posted on " . $row['post_time'] . "</p></div>";
       } else {
         echo "rip query";
       }
