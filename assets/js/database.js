@@ -288,7 +288,7 @@ $(document).ready(function (e) {
    });
    }
 
-   
+
    function GetUserProfile () {
 
     var params = new URLSearchParams(document.location.search.substring(1));
@@ -387,7 +387,7 @@ $(document).ready(function (e) {
             console.log("WE HERE")
            if (data == 1) {
                //posts gedaan
-               ShowNotiBox(3000, "A new verification email has been sent", true);      
+               ShowNotiBox(3000, "A new verification email has been sent", true);
                 $("#loader").toggle(300);
            } else {
                //De login was waarschijnlijk niet goed
@@ -401,7 +401,7 @@ $(document).ready(function (e) {
 
    }
 
-   
+
    function ResetPassword(type) {
 
     pass = "";
@@ -437,10 +437,10 @@ $(document).ready(function (e) {
             console.log(data)
            if (data == 1) {
                //posts gedaan
-               ShowNotiBox(3000, "An email has been sent to reset the password", true);      
+               ShowNotiBox(3000, "An email has been sent to reset the password", true);
                 $("#loader").toggle(300);
            } else if (data == 2) {
-                ShowNotiBox(1500, "Password has been reset", true);      
+                ShowNotiBox(1500, "Password has been reset", true);
                 setTimeout(function () {
                     window.location.href = "login.php";
                 },2000);
@@ -468,15 +468,52 @@ $(document).ready(function (e) {
          success:function(data) {
             if (data == 1) { // 1 is a public account
                 ShowNotiBox(2000, `You are now following ${username}`, true);
+                $('.following').text("Following");
             } else if (data == 2) {
                 ShowNotiBox(2500, `You have requested to follow ${username}`, true);
+                $('.following').text("Requested to follow");
             } else if (data == 3) {
                 ShowNotiBox(2500, `You are already following ${username}`, false);
+                $('.following').text("Following");
             } else if (data == 4) {
                 ShowNotiBox(5000, `Trying to follow yourself? Don't worry it's okay to be lonely.`, false);
+                $('.following').text();
             } else {
                 ShowNotiBox(3000, `Oops, could not follow ${username} at this time`, false);
             }
+            setTimeout(function () {
+              location.reload();
+            },1000)
         }, dataType: 'json'
     });
+}
+
+function UnfollowUser (username) {
+ console.log('trying to add friend');
+ $.ajax({
+      type: "POST",
+      url: 'includes/unfollowUser.php',
+      data:{
+         username: username
+     },
+      success:function(data) {
+        console.log(data);
+         if (data == 1) { // 1 is a public account
+             ShowNotiBox(2000, `You unfollowed ${username}`, true);
+             $('.following').text("Unfollowed");
+         } else if (data == 2) {
+             ShowNotiBox(2500, `You have requested to follow ${username}`, true);
+         } else if (data == 3) {
+             ShowNotiBox(2500, `You are already following ${username}`, false);
+         } else if (data == 4) {
+             ShowNotiBox(5000, `Trying to follow yourself? Don't worry it's okay to be lonely.`, false);
+         } else {
+             ShowNotiBox(3000, `Oops, could not follow ${username} at this time`, false);
+         }
+
+         setTimeout(function () {
+           location.reload();
+         },1000)
+     }, dataType: 'json'
+ });
 }

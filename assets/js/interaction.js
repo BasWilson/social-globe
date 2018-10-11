@@ -398,7 +398,6 @@ document.getElementById('textField').addEventListener('keypress', function(event
     }
 });
 
-
 //profile aanpassen
 function EditProfile(){
     $('#profile-view').toggle();
